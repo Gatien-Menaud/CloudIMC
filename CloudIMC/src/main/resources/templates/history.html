@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>IMC Calculator - History</title>
+</head>
+<body>
+    <h1>Calculation History</h1>
+
+    <table border="1" cellpadding="8" style="border-collapse: collapse; width: 100%;">
+        <thead>
+            <tr style="background-color: #e0e0e0;">
+                <th>Name</th>
+                <th>Weight (kg)</th>
+                <th>Height (m)</th>
+                <th>IMC Value</th>
+                <th>IMC Category</th>
+                <th>Date Added</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="record : ${records}">
+                <td th:text="${record.name}">John</td>
+                <td th:text="${record.weight}">70.0</td>
+                <td th:text="${record.height}">175</td>
+                <td th:text="${record.imcValue}">22.86</td>
+                <td th:text="${record.category}">Normal</td>
+                <td th:text="${#temporals.format(record.createdAt, 'yyyy-MM-dd HH:mm')}">2026-05-31 12:00</td>
+            </tr>
+            <tr th:if="${#lists.isEmpty(records)}">
+                <td colspan="6" style="text-align: center;">No records found in database.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <br>
+
+    <a href="/">
+        <button type="button">Back to Home</button>
+    </a>
+</body>
+</html>
