@@ -16,6 +16,7 @@ services:
           name: imc-db
           property: password
 
+# 2. Configuration de la base de données MySQL
 databases:
   - name: imc-db
     databaseName: imc_db
