@@ -1,16 +1,18 @@
+version: '3.8'
+
 services:
-  # Service 1 : La base de données MySQL
+  # Remplace ton ancien service mysql par ce service postgres
   db:
-    image: mysql:8.0
-    container_name: imc-db
-    restart: always
+    image: postgres:15-alpine
+    container_name: imc_postgres_local
     environment:
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: imc_db
+      POSTGRES_DB: imc_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
     ports:
-      - "3306:3306"
+      - "5432:5432" # On ouvre le port 5432 attendu par ton Java
     volumes:
-      - mysql_status_data:/var/lib/mysql
+      - postgres_data:/var/lib/postgresql/data
 
 volumes:
-  mysql_status_data:
+  postgres_data:
