@@ -2,15 +2,30 @@ services:
   # 1. Configuration de l'application Java Spring Boot via Docker
   - type: web
     name: cloud-imc-app
-    runtime: docker
-    plan: free
+    runtime: docker 
+    plan: free      
     envVars:
+      # On reconstruit une URL JDBC standard en assemblant les variables fournies par Render
       - key: DATABASE_URL
+        value: jdbc:postgresql://${DATABASE_HOST}/${DATABASE_NAME}
+      - key: DATABASE_USERNAME
         fromDatabase:
           name: imc-db-postgres
-          property: connectionString
+          property: user
+      - key: DATABASE_PASSWORD
+        fromDatabase:
+          name: imc-db-postgres
+          property: password
+      - key: DATABASE_HOST
+        fromDatabase:
+          name: imc-db-postgres
+          property: host
+      - key: DATABASE_NAME
+        fromDatabase:
+          name: imc-db-postgres
+          property: database
 
-# 2. Configuration de la base de données PostgreSQL
+# 2. Configuration de la base de données PostgreSQL gratuite
 databases:
   - name: imc-db-postgres
     databaseName: imc_db
