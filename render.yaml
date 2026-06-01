@@ -5,20 +5,9 @@ services:
     envVars:
       - key: DATABASE_URL
         fromDatabase:
-          name: imc-db
+          name: imc-db-postgres
           property: connectionString
-      - key: DATABASE_USERNAME
-        fromDatabase:
-          name: imc-db
-          property: user
-      - key: DATABASE_PASSWORD
-        fromDatabase:
-          name: imc-db
-          property: password
 
-# 2. Configuration de la base de données MySQL
 databases:
-  - name: imc-db
-    databaseName: imc_db
-    user: imc_user
-    plan: free
+  - name: imc-db-postgres
+    plan: free # PostgreSQL est 100% gratuit sur Render !
