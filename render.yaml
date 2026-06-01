@@ -2,7 +2,7 @@ services:
   # 1. Configuration de l'application Java Spring Boot
   - type: web
     name: cloud-imc-app
-    runtime: java
+    runtime: docker
     buildCommand: mvn -f CloudIMC/pom.xml clean package -DskipTests
     startCommand: java -jar CloudIMC/target/*.jar
     envVars:
