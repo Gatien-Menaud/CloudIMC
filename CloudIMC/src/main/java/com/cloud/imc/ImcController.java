@@ -18,10 +18,10 @@ public class ImcController {
     // 1. PAGE D'ACCUEIL
     @GetMapping("/")
     public String showHome() {
-        return "index"; // Renvoie simplement vers index.html
+        return "index";
     }
 
-    // 2. PAGE DE RÉSULTAT (Déclenchée par le bouton "Calculate")
+    // 2. PAGE DE RÉSULTAT
     @PostMapping("/calculate")
     public String calculateAndSave(
             @RequestParam("name") String name,
@@ -32,10 +32,9 @@ public class ImcController {
         // Calcul de l'IMC
         double mHeight = height / 100;
         double imc = weight / (mHeight * mHeight);
-        // Arrondi à 2 décimales
         imc = Math.round(imc * 100.0) / 100.0;
 
-        // Détermination de la catégorie (Logique temporaire en attendant les tables de configuration)
+        // Détermination de la catégorie
         String category = "Normal";
         if (imc < 18.5) {
             category = "Underweight";
@@ -54,7 +53,7 @@ public class ImcController {
         model.addAttribute("currentImc", imc);
         model.addAttribute("currentCategory", category);
 
-        return "result"; // Ouvre la page result.html
+        return "result";
     }
 
     // 3. PAGE D'HISTORIQUE
@@ -66,6 +65,6 @@ public class ImcController {
         // Envoie la liste au fichier history.html sous le nom "records"
         model.addAttribute("records", allRecords);
         
-        return "history"; // Ouvre la page history.html
+        return "history";
     }
 }

@@ -1,7 +1,6 @@
 package com.cloud.imc;
 
 import static org.junit.Assert.assertTrue;
-
 import org.junit.Test;
 
 /**
@@ -10,7 +9,7 @@ import org.junit.Test;
 public class AppTest 
 {
     /**
-     * Rigorous Test :-)
+     * Rigorous Test
      */
     @Test
     public void shouldAnswerWithTrue()

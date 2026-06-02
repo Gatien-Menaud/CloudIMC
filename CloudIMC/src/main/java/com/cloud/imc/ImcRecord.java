@@ -27,7 +27,6 @@ public class ImcRecord {
     public ImcRecord() {
     }
 
-    // Constructeur complet
     public ImcRecord(String name, double weight, double height, double imcValue, String category) {
         this.name = name;
         this.weight = weight;
